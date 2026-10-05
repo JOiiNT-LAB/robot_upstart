@@ -2,15 +2,7 @@
 Changelog for package robot_upstart
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-0.4.2 (2022-02-16)
-------------------
-* Use setpriv instead of setuidgid
-  Replicates change from melodic-devel.  Setpriv allows use of group permissions, reducing the need to globally apply r/w permissions to devices.
-* empty -> EmPy
-* Added License.
-* Contributors: Chris I-B, Mikael Arguedas, Tony Baltovski
-
-0.4.1 (2021-05-12)
+0.3.3 (2021-05-12)
 ------------------
 * Enable customization of  After= in service (`#104 <https://github.com/clearpathrobotics/robot_upstart/issues/104>`_)
   * Cosmetic
@@ -25,15 +17,17 @@ Changelog for package robot_upstart
 * Bumped CMake version to avoid author warning.
 * Contributors: Tkostas, Tony Baltovski
 
-0.4.0 (2021-03-01)
+0.3.2 (2021-03-01)
 ------------------
-* Updated maintainers.
-* fix remaining roslint error
-* fix most roslint failures
-* run ci on ROS noetic
-* changed unittest file to use env python3
-* updated to work with python3
-* Update the python scripts to be python3-compatible
+* Using setpriv (`#101 <https://github.com/clearpathrobotics/robot_upstart/issues/101>`_)
+  * Try replacing setuidgid with setpriv to see if this is a viable solution to the group permission issues
+  * Fix a typo
+  * Set the real and effective user and group IDs, not just the real ones
+  * Add a missing "roslaunch" argument to the actual launch. Whoops :/
+* Contributors: Chris I-B
+
+0.3.1 (2021-03-01)
+------------------
 * [doc] Add commands when systemd is chosen. (`#78 <https://github.com/clearpathrobotics/robot_upstart/issues/78>`_)
   When `systemd` is specified as a provider, commands are different.
   https://wiki.ubuntu.com/SystemdForUpstartUsers
@@ -52,10 +46,28 @@ Changelog for package robot_upstart
 * [CI][kinetic-devel] Update to Xenial. (`#79 <https://github.com/clearpathrobotics/robot_upstart/issues/79>`_)
   * [CI][kinetic-devel] Update to Xenial.
   On a PR https://github.com/clearpathrobotics/robot_upstart/pull/78 I saw [CI failure](https://travis-ci.org/clearpathrobotics/robot_upstart/builds/507510733?utm_source=github_status&utm_medium=notification) that seems to be related to platform issue. Using `trusty` for xenial-based job might not work (any more?).
+  ```
+  Unpacking python-rospkg (1.1.7-100) ...
+  dpkg-deb: error: archive '/var/cache/apt/archives/python-rosdep_0.15.1-1_all.deb' has premature member 'control.tar.xz' before 'control.tar.gz', giving up
+  dpkg: error processing archive /var/cache/apt/archives/python-rosdep_0.15.1-1_all.deb (--unpack):
+  subprocess dpkg-deb --control returned error exit status 2
+  No apport report written because MaxReports is reached already
+  Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+  Processing triggers for shared-mime-info (1.2-0ubuntu3) ...
+  Processing triggers for sgml-base (1.26+nmu4ubuntu1) ...
+  Errors were encountered while processing:
+  /var/cache/apt/archives/python-catkin-pkg-modules_0.4.10-1_all.deb
+  /var/cache/apt/archives/python-catkin-pkg_0.4.10-100_all.deb
+  /var/cache/apt/archives/python-rosdistro-modules_0.7.2-1_all.deb
+  /var/cache/apt/archives/python-rosdistro_0.7.2-100_all.deb
+  /var/cache/apt/archives/python-rosdep_0.15.1-1_all.deb
+  E: Sub-process /usr/bin/dpkg returned an error code (1)
+  The command "sudo apt-get install python-rosdep -y" failed and exited with 100 during .
+  ```
   * [CI] Switch to industrial_ci. Add ROS2 dashing.
   * [CI] Remove ROS2 dashing for now (see https://github.com/clearpathrobotics/robot_upstart/pull/79#issuecomment-533908848).
 * Add support for wait flag in the install script (`#73 <https://github.com/clearpathrobotics/robot_upstart/issues/73>`_)
-* Contributors: Chris I-B, Frederik Mazur Andersen, Isaac I.Y. Saito, Mateusz Sadowski, Mikael Arguedas, Mike Purvis, Ramon Wijnands, Tony Baltovski
+* Contributors: Isaac I.Y. Saito, Mateusz Sadowski, Mike Purvis, Ramon Wijnands
 
 0.3.0 (2018-05-23)
 ------------------

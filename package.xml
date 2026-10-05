@@ -1,14 +1,13 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>robot_upstart</name>
-  <version>0.4.2</version>
+  <version>0.3.3</version>
   <description>
     The robot_upstart package provides scripts which may be used to install
     and uninstall Ubuntu Linux upstart jobs which launch groups of roslaunch files.
   </description>
 
-  <maintainer email="civerachb@clearpathrobotics.com">Chris Iverach-Brereton</maintainer>
-  <maintainer email="tbaltovski@clearpathrobotics.com">Tony Baltovski</maintainer>
+  <maintainer email="mpurvis@clearpathrobotics.com">Mike Purvis</maintainer>
   <author email="mpurvis@clearpathrobotics.com">Mike Purvis</author>
 
   <license>BSD</license>
